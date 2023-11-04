@@ -1,20 +1,19 @@
 Authors : 
 
--Ta Ngan Giang Le (586551) 
+- Ta Ngan Giang Le (586551) 
 
--Janisha Sithmi Sandamini Kekanadura Vidana Gamage (580828)
+- Janisha Sithmi Sandamini Kekanadura Vidana Gamage (580828)
+
 
 **Projektübersicht: Webseite zur Restaurantbewertung**
 
 Hauptfunktionen der Webseite:
 
-- Bewertung von Restaurants mittels Sternensystem (1 (mangelhaft) bis 5 (ausgezeichnet)).
+- Bewertung von Restaurants mittels Sternensystem (1 (POOR) bis 5 (EXCELLENT)).
 
 
 - Möglichkeit, Kommentare zu Restaurants zu hinterlassen.
 
-
-- Option zur Namensveröffentlichung oder anonymen Bewertung.
 
 
 - Hinzufügen nicht gelisteter Restaurants zur Datenbank.
@@ -24,18 +23,17 @@ Hauptfunktionen der Webseite:
 
   • Name
 
-  • Bild
+  • Stadtteil
 
-  • Standort
+  • Adresse
 
-  • Beschreibung (Öffnungszeiten und Kategorie)
+  • Kategorie
 
   • Anzeige aller Bewertungen eines Restaurants.
 
 
 - Kategorisierung von Restaurants:
   • Nach Speiseart (z.B. Italienisch, japanisch, koreanisch)
-  • Nach Stadtteilen (z.B.Mitte, Charlottenburg)
 
 
 - Suchfunktion auf der Startseite (nach Restaurantnamen).
@@ -44,4 +42,4 @@ Hauptfunktionen der Webseite:
 - Hervorhebung von beliebten Restaurants auf der Startseite.
 
 
-- Sortierfunktion für Suchergebnisse (beste bis schlechteste Bewertung).
+- Sortierfunktion für Suchergebnisse.
