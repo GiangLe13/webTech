@@ -1,6 +1,7 @@
 package com.example.helloworld1.service;
 
 import com.example.helloworld1.persistence.Restaurant;
+import com.example.helloworld1.persistence.attribute.Category;
 import com.example.helloworld1.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class RestaurantService {
         if (restaurant.getCategory() == null) {
             throw new IllegalArgumentException("Restaurant category cannot be empty");
         }
+        validateRestaurant(restaurant);
         return repo.save(restaurant);
     }
 
@@ -46,6 +48,7 @@ public class RestaurantService {
         restaurant.setName(update.getName());
         restaurant.setDistrict(update.getDistrict());
         restaurant.setAddress(update.getAddress());
+        validateCategory(update.getCategory());
         restaurant.setCategory(update.getCategory());
 
         return repo.save(restaurant);
@@ -55,5 +58,26 @@ public class RestaurantService {
         Restaurant restaurant = repo.findById(id).orElseThrow(() -> new RuntimeException("Restaurant not found with id: " + id));
 
         repo.delete(restaurant);
+    }
+
+    private void validateRestaurant(Restaurant restaurant) {
+        if (restaurant.getCategory() == null || !isValidCategory(restaurant.getCategory())) {
+            throw new IllegalArgumentException("Invalid restaurant category");
+        }
+    }
+
+    private void validateCategory(Category category) {
+        if (category == null || !isValidCategory(category)) {
+            throw new IllegalArgumentException("Invalid restaurant category");
+        }
+    }
+
+    private boolean isValidCategory(Category category) {
+        for (Category validCategory : Category.values()) {
+            if (validCategory.equals(category)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
