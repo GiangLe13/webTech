@@ -1,6 +1,7 @@
 package com.example.helloworld1.persistence;
 
 import com.example.helloworld1.persistence.attribute.Rating;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -20,7 +21,9 @@ public class Review {
 
     private String comment;
 
+    @JsonBackReference
     @ManyToOne
+    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
     public Review() {
@@ -49,17 +52,6 @@ public class Review {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
-    }
-
-    public String getRatingDescription(int rating) {
-        return switch (rating) {
-            case 1 -> "Poor";
-            case 2 -> "Below Average";
-            case 3 -> "Average";
-            case 4 -> "Good";
-            case 5 -> "Excellent";
-            default -> throw new IllegalArgumentException("Invalid rating value. Rating must be between 1 and 5.");
-        };
     }
 
     @Override

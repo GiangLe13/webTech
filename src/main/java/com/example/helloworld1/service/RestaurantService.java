@@ -56,7 +56,6 @@ public class RestaurantService {
 
     public void delete(Long id) {
         Restaurant restaurant = repo.findById(id).orElseThrow(() -> new RuntimeException("Restaurant not found with id: " + id));
-
         repo.delete(restaurant);
     }
 

@@ -1,9 +1,11 @@
 package com.example.helloworld1.persistence;
 
 import com.example.helloworld1.persistence.attribute.Category;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -21,6 +23,10 @@ public class Restaurant {
 
     @Enumerated(value = EnumType.STRING)
     private Category category;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
 
     public Restaurant() {
     }
