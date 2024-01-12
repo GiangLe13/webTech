@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 import java.util.List;
@@ -81,5 +82,17 @@ public class ReviewControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.author").value("Author1"))
                 .andExpect(jsonPath("$.rating").value("GOOD"));
+    }
+
+    @Test
+    @DisplayName("should delete review and return 200 OK")
+    void testDeleteReview() throws Exception {
+        Long reviewId = 1L;
+        doNothing().when(service).delete(reviewId);
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/reviews/" + reviewId))
+                .andExpect(status().isOk());
+
+        verify(service).delete(reviewId);
     }
 }
