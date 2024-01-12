@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -92,5 +93,20 @@ public class RestaurantServiceTests {
 
         verify(repo).findById(givenId);
         verify(repo).delete(restaurant);
+    }
+
+    @Test
+    @DisplayName("should return 'Restaurant name cannot be empty'")
+    public void testSaveRestaurantInvalid() {
+        Restaurant invalidRestaurant = new Restaurant("", "District", "Address", Category.ITALIAN);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            service.save(invalidRestaurant);
+        });
+
+        String expectedMessage = "Restaurant name cannot be empty";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 }
