@@ -36,7 +36,7 @@ public class Review {
         this.restaurant = restaurant;
     }
 
-    //public void setId(Long id) {this.id = id;}
+    public void setId(Long id) {this.id = id;}
 
     public void setAuthor(String reviewer) {
         this.author = reviewer;

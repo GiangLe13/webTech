@@ -38,7 +38,7 @@ public class Restaurant {
         this.category = category;
     }
 
-    //public void setId(Long id) {this.id = id;}
+    public void setId(Long id) {this.id = id;}
 
     public void setName(String name) {
         this.name = name;
